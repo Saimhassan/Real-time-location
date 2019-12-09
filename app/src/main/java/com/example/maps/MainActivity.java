@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Paper.init(this);
-        setContentView(R.layout.activity_main);
 
         user_information = FirebaseDatabase.getInstance().getReference(Common.USER_INFORMATION);
 
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                                 {
                                         if (!dataSnapshot.child(firebaseUser.getUid()).exists()) {
                                           Common.loggedUser = new User(firebaseUser.getUid(),firebaseUser.getEmail());
-                                          user_information.child(Common.loggedUser.getEmail())
+                                          user_information.child(Common.loggedUser.getUid())
                                                 .setValue(Common.loggedUser);
                                         }
                                         else
